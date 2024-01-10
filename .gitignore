@@ -80,6 +80,7 @@ target
 ## golang
 /maker/golang/dbmaker
 /maker/golang/xdb_maker
+/maker/golang/xdb_maker.exe
 /maker/golang/golang
 
 #erlang
