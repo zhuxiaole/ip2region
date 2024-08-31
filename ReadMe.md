@@ -42,6 +42,7 @@ API 介绍，使用文档和测试程序请参考对应 `searcher` 查询客户�
 | :white_check_mark: | 已完成  | [erlang](binding/erlang) | erlang xdb 查询客户端实现   | [leihua996](https://github.com/leihua996) |
 | &nbsp;&nbsp;&nbsp; | 待开始  | [php_ext](binding/php7_ext) | php c 扩展 xdb 查询客户端实现 | 待确定 |
 | :white_check_mark: | 已完成  | [nginx](binding/nginx) | nginx 扩展 xdb 查询客户端实现  | [Wu Jian Ping](https://github.com/wujjpp) |
+| :white_check_mark: | 已完成  | [C++](binding/cpp) | C++ xdb 查询客户端实现    | [Yunbin Liu](https://github.com/liuyunbin) |
 
 
 以下工具链实现由社区开发者通过第三方仓库贡献：
@@ -62,6 +63,8 @@ API 介绍，使用文档和测试程序请参考如下 `maker` 生成程序下�
 | &nbsp;&nbsp;&nbsp; | 待开始  | [c](maker/c) | ANSC c xdb 生成程序实现 | [Lion](https://github.com/lionsoul2014) |
 | :white_check_mark: | 已完成  | [python](maker/python) | python xdb 生成程序实现 | [leolin49](https://github.com/leolin49) |
 | :white_check_mark: | 已完成  | [csharp](maker/csharp) | csharp xdb 生成程序实现 | [Alan Lee](https://github.com/malus2077) |
+| :white_check_mark: | 已完成  | [rust](maker/rust) | rust xdb 生成程序实现 | [KevinWang](https://github.com/KevinWL) |
+| :white_check_mark: | 已完成  | [C++](maker/cpp) | C++ xdb 生成程序实现 | [Yunbin Liu](https://github.com/liuyunbin) |
 
 
 # `xdb` 数据更新
@@ -71,7 +74,7 @@ ip2region 旨在于 <b>研究 IP 数据的存储和快速查询的设计和实�
 
 ### 手动编辑更新
 你可以基于 ip2region 自带的 `./data/ip.merge.txt` 原始 IP 数据用 ip2region 提供的编辑工具来自己修改，目前数据源有如下几种方式：
-1. ip2region 社区群提供的数据（请参考地底部的备注信息加入 ip2region 微信群）
+1. ip2region 社区提供的数据（请参考地底部的公众号关注社区通知）
 2. ip2region Github/Gitee 中带有 `[数据源补充]` 标签的 Issue
 3. 其他自定义数据：例如客户提供的数据，或者通过 GPS 和 WIFI 定位得到的数据，或者来自其他平台的合法合规的数据
 
@@ -81,6 +84,7 @@ ip2region 旨在于 <b>研究 IP 数据的存储和快速查询的设计和实�
 |:-------------------|:----| :--- |:-------------------| :--- |
 | :white_check_mark: | 已完成 | [golang](maker/golang#xdb-数据编辑) | golang 原始 IP 数据编辑器 | [Lion](https://github.com/lionsoul2014) |
 | &nbsp;&nbsp;&nbsp; | 待开始 | [java](maker/java#xdb-数据编辑) | java 原始 IP 数据编辑器   | [Lion](https://github.com/lionsoul2014) |
+| :white_check_mark: | 已完成 | [C++](maker/cpp#xdb-数据编辑) | C++ 原始 IP 数据编辑器 | [Yunbin Liu](https://github.com/liuyunbin) |
 
 
 ### 检测自动更新
@@ -92,7 +96,7 @@ ip2region 旨在于 <b>研究 IP 数据的存储和快速查询的设计和实�
 # 相关备注
 
 ### 1、并发查询必读
-全部查询客户端的 search 接口都 <b>不是</b> 并发安全的实现，不同进程/线程/协程需要通过创建不同的查询对象来安全使用，并发量很大的情况下，基于文件查询的方式可能会导致打开文件数过多的错误，请修改内核的最大允许打开文件数(fs.file-max=一个更高的值)，或者将整个xdb加载到内存进行安全并发使用。
+xdb 整个缓存的查询都 <b>是</b> 并发安全的，基于文件的查询都 <b>不是</b> 并发安全的实现，不同进程/线程/协程需要通过创建不同的查询对象来安全使用，并发量很大的情况下，基于文件查询的方式可能会导致打开文件数过多的错误，请修改内核的最大允许打开文件数(fs.file-max=一个更高的值)，或者将整个xdb加载到内存进行安全并发使用。
 
 ### 2、技术资源分享
 1. xdb 数据结构分析：[“ip2region xdb 数据结构和查询过程详解“](https://mp.weixin.qq.com/s/ndjzu0BgaeBmDOCw5aqHUg)
